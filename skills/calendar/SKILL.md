@@ -160,5 +160,5 @@ addendum names it, or list the calendars and ask). Never guess holiday dates fro
 ## This setup's own rules
 
 If this setup has an addendum for this skill, read it now: the file `calendar.md` in the folder
-`addenda` names in `~/.config/session-dashboard/where.json`. Where it differs from the text above,
-it wins.
+`addenda` names in `~/.config/session-dashboard/where.json`, or, without that file, in
+`~/.config/office-skills/addenda/`. Where it differs from the text above, it wins.

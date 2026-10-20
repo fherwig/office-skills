@@ -87,5 +87,5 @@ rebuild it after each export, since only mailboxes whose file changed are re-rea
 ## This setup's own rules
 
 If this setup has an addendum for this skill, read it now: the file `email-archive.md` in the folder
-`addenda` names in `~/.config/session-dashboard/where.json`. Where it differs from the text above,
-it wins.
+`addenda` names in `~/.config/session-dashboard/where.json`, or, without that file, in
+`~/.config/office-skills/addenda/`. Where it differs from the text above, it wins.

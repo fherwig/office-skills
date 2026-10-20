@@ -15,6 +15,7 @@ browser for polls. Versions for other systems may join later.
 | **email-archive** | Open or search an archive of old mailboxes exported to mbox, in a separate Thunderbird profile |
 | **calendar** | Create, list and search events, always with an alert |
 | **calendar-poll** | Answer a scheduling poll (when2meet, and similar ones such as Doodle) from your free time in Calendar, after showing you the plan |
+| **office-setup** | Installs, sets up, checks or removes the skills above for you: links the ones you choose, asks the few questions, writes your settings, and tests each skill without changing anything |
 
 ## What these skills will not do
 
@@ -25,36 +26,42 @@ browser for polls. Versions for other systems may join later.
 
 ## Install
 
+**Say one sentence** to whoever looks after your agent sessions: "install office-skills from
+<this repository's address>".
+
+- **With the session dashboard,** that is its steward, or your hub, which passes the request on.
+  If the dashboard lists office-skills among its optional pieces, it installs them as one of
+  those, so its own checks see them and can remove them exactly.
+- **Without it,** any agent session will do.
+
+Either way the agent follows the **office-setup** skill in this repository:
+1. It checks the computer.
+2. It links only the skills you choose.
+3. It gets macOS's permission prompts out of the way, so you can answer Allow.
+4. It asks only what it cannot find out: your main mail account, your default calendar, where
+   your todo list is, whether you have a mail archive.
+5. It writes your settings to `~/.config/office-skills/`, and tests each skill without sending or
+   changing anything.
+
+"remove office-skills" undoes it.
+
+**By hand,** if you prefer:
 1. Clone this repository.
-2. Link each skill folder into the place your agent looks for skills. For Claude Code that is
-   `~/.claude/skills/`:
-   ```bash
-   for s in email-read email-compose email-sweep email-archive calendar calendar-poll; do
-     ln -s "$(pwd)/skills/$s" ~/.claude/skills/$s
-   done
-   ```
-   Link rather than copy, so `git pull` updates them.
+2. Link each skill folder you want into your agent's skills folder, for Claude Code
+   `~/.claude/skills/`, for example
+   `ln -s "$(pwd)/skills/email-read" ~/.claude/skills/email-read`. Link rather than copy, so
+   `git pull` updates them.
 3. The first time a skill drives Mail or Calendar, macOS asks whether your terminal may control
-   that app. Allow it in System Settings, Privacy & Security, Automation.
-
-## Setup, per skill
-
-- **email-sweep** files into places you name: your todo list, your project files, a notes file.
-  It reads them from `~/.config/office-skills/email-sweep.json`; the skill lists the keys. If you
-  use the session dashboard, it reads them from the dashboard's `where.json` instead.
-- **email-archive** needs the archive's location and the Thunderbird profile to use, in
-  `~/.config/office-skills/email-archive.json`; the skill lists the keys. Exporting mailboxes from
-  Mail needs Full Disk Access for your terminal. Searching the archive needs none.
-- **calendar** and **calendar-poll** find your calendars by asking Calendar. Tell your agent which
-  calendar to use by default, or put it in your own addendum (below).
+   that app. Allow it, or later in System Settings, Privacy & Security, Automation.
+4. Each skill's own text says what it needs set up once.
 
 ## Your own rules: addenda
 
 Each skill ends by reading an optional addendum: a file named after the skill, holding your own
-rules where they differ from the shared text. Examples are your accounts, mailbox names, default
+rules where they differ from the shared text. It lives in `~/.config/office-skills/addenda/`, and office-setup writes a starter one for each skill you choose. Examples are your accounts, mailbox names, default
 calendar, or a style guide for drafts. The shared text stays the same for everyone, and your
-specifics stay with you. If you use the session dashboard, its `where.json` names the folder,
-under `addenda`.
+specifics stay with you. If you use the session dashboard, its `where.json` names the folder
+instead, under `addenda`.
 
 ## Licence
 
