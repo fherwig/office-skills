@@ -1,6 +1,6 @@
 ---
 name: office-setup
-description: Install, set up, check or remove the office-skills (email-read, email-compose, email-sweep, email-archive, calendar, calendar-poll) for a person. It links the skills they choose, asks only what it cannot find out itself, writes their settings and starter add-ons, gets macOS's permission prompts out of the way, and tests each skill without changing anything. Run by whoever looks after the person's sessions, which in a session dashboard is the steward. Use for "install office-skills", "set up office-skills", "set up the office skills", "check office-skills", "remove office-skills".
+description: Install, set up, check or remove the office-skills (email-read, email-compose, email-sweep, email-archive, calendar, calendar-poll) for a person. It links the skills they choose, asks only what it cannot find out itself, writes their settings and starter add-ons, gets macOS's permission prompts out of the way, and tests each skill without changing anything. Run by whoever looks after the person's sessions: their steward or hub if the setup has one, or any agent session. Use for "install office-skills", "set up office-skills", "set up the office skills", "check office-skills", "remove office-skills".
 ---
 
 # office-setup: install the office skills for a person
