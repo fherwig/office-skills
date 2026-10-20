@@ -16,8 +16,9 @@ The person says one sentence to whoever looks after their sessions: "install off
 ## Rules for the whole setup
 
 - **One step at a time, each after the person's yes.** Say what the step will do before doing it.
-- **Write only in two places:** links in the agent's skills folder, and files in
-  `~/.config/office-skills/`. Change nothing in Mail, Calendar, Thunderbird or the browser.
+- **Write only in three places:** links in the agent's skills folder, files in
+  `~/.config/office-skills/`, and, for email-archive, one link in `~/.local/bin`. Change nothing in
+  Mail, Calendar, Thunderbird or the browser.
 - **Send nothing, and look up no addresses.** The test of email-compose opens a draft only if the
   person agrees, and leaves its recipients empty.
 - **Read as little mail as possible.** The tests count messages and show one subject line. They
@@ -33,7 +34,8 @@ These checks prompt nothing:
 sw_vers -productVersion                      # macOS
 ls -d /System/Applications/Mail.app /System/Applications/Calendar.app
 python3 --version                            # 3.9 or newer, for email-archive and calendar-poll
-sqlite3 --version                            # 3.43 or newer, for the email-archive search index
+sqlite3 --version                            # 3.43 or newer, for the email-archive search index;
+                                             # if older, use a newer sqlite3 (e.g. from Homebrew) or leave email-archive out
 ls -d /Applications/Thunderbird.app          # only for email-archive
 ls -d "/Applications/Google Chrome.app"      # only for calendar-poll
 ```
@@ -74,7 +76,9 @@ ln -s ~/src/office-skills/skills/<skill> ~/.claude/skills/<skill>
 ```
 
 email-archive also needs its command on the PATH:
-`ln -s ~/src/office-skills/skills/email-archive/email_archive.py ~/.local/bin/email-archive`.
+`ln -s ~/src/office-skills/skills/email-archive/email_archive.py ~/.local/bin/email-archive`. If
+`~/.local/bin` does not exist, create it. If it is not on the PATH (macOS does not add it), show
+the person the one line for their shell's startup file, and add it only on their yes.
 
 ## Step 4: get macOS's permission prompts out of the way
 
