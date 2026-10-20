@@ -114,7 +114,7 @@ Find first, then ask, and offer what you found as the default.
   `osascript -e 'tell application "Calendar" to return name of every calendar'`. Also ask whether
   a holiday calendar is subscribed, since calendar-poll uses it.
 - **calendar-poll:** the time zone is this computer's. Ask only if the person travels with the
-  laptop and wants a fixed home zone.
+  computer and wants a fixed home zone.
 
 ## Step 6: write the settings and the starter add-ons
 
