@@ -29,10 +29,10 @@ browser for polls. Versions for other systems may join later.
 **Say one sentence** to whoever looks after your agent sessions: "install office-skills from
 <this repository's address>".
 
-- **With the session dashboard,** that is its steward, or your hub, which passes the request on.
-  If the dashboard lists office-skills among its optional pieces, it installs them as one of
-  those, so its own checks see them and can remove them exactly.
-- **Without it,** any agent session will do.
+- **If your setup has an agent that looks after your sessions,** a steward or a hub, ask it. If
+  your setup offers office-skills as one of its optional pieces, it installs them that way, so its
+  own checks see them and can remove them exactly.
+- **Otherwise,** any agent session will do.
 
 Either way the agent follows the **office-setup** skill in this repository:
 1. It checks the computer.
@@ -58,10 +58,10 @@ Either way the agent follows the **office-setup** skill in this repository:
 ## Your own rules: addenda
 
 Each skill ends by reading an optional addendum: a file named after the skill, holding your own
-rules where they differ from the shared text. It lives in `~/.config/office-skills/addenda/`, and office-setup writes a starter one for each skill you choose. Examples are your accounts, mailbox names, default
+rules where they differ from the shared text, in `~/.config/office-skills/addenda/`. office-setup writes a starter one for each skill you choose. Examples are your accounts, mailbox names, default
 calendar, or a style guide for drafts. The shared text stays the same for everyone, and your
-specifics stay with you. If you use the session dashboard, its `where.json` names the folder
-instead, under `addenda`.
+specifics stay with you. If the optional file `~/.config/session-dashboard/where.json` exists and
+names `addenda`, that folder is used instead.
 
 ## Licence
 

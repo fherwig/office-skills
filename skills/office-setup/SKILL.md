@@ -7,14 +7,11 @@ description: Install, set up, check or remove the office-skills (email-read, ema
 
 The person says one sentence to whoever looks after their sessions: "install office-skills".
 
-- **With the session dashboard,** that is the steward, which keeps the dashboard's machinery. The
-  person may ask their hub instead, and the hub passes the request on to the steward. If the
-  dashboard lists office-skills among its optional pieces, the steward installs them through the
-  dashboard (`sd practice list`, then `sd practice adopt`), so that `sd doctor` sees them and
-  `sd practice drop` removes exactly what was added. Then it continues at step 4 below: the
-  dashboard links, and this skill sets up.
-- **Without the dashboard,** any agent session can run this skill. The person gives it the
-  repository's address.
+- **If the person's setup has an agent that looks after their sessions,** a steward or a hub,
+  that agent runs this skill. If the setup offers office-skills as one of its own optional
+  pieces, install them through it, so that the setup's own checks know what was linked and can
+  remove exactly that. Then continue at step 4 below: the setup links, and this skill sets up.
+- **Otherwise any agent session can run it.** The person gives it the repository's address.
 
 ## Rules for the whole setup
 
@@ -97,7 +94,7 @@ Automation, under the terminal app.
 
 Find first, then ask, and offer what you found as the default.
 
-- **Where things are.** If `~/.config/session-dashboard/where.json` exists, it already names the
+- **Where things are.** If the optional file `~/.config/session-dashboard/where.json` exists, it already names the
   todo list (`todo`), the register of work (`register`), a capture file (`inbox`), the hub
   (`hub`) and the add-ons folder (`addenda`). Use those and do not ask about them.
 - **email-read and email-compose:** which account is the person's main one. List them with
@@ -119,6 +116,9 @@ Find first, then ask, and offer what you found as the default.
 
 Show each file before writing it.
 
+- **The archive command.** Whenever email-archive is linked and `email-archive` is not on the PATH,
+  link it: `ln -s <the email-archive skill folder>/email_archive.py ~/.local/bin/email-archive`. A
+  setup that linked the skills itself skipped step 3, where this link is otherwise made.
 - **Settings,** only for the skills that read them:
   - `~/.config/office-skills/email-sweep.json`, with the keys listed in email-sweep's own text:
     `todo`, `register`, `notes`, `inbox`, `account`, `inbox_mailbox`, and others as needed;
@@ -165,7 +165,8 @@ With the person's yes:
 - remove the links this setup made, and only links that point into the office-skills repository;
 - remove the `email-archive` link from `~/.local/bin`;
 - ask before removing `~/.config/office-skills/`, because it holds the person's own add-ons;
-- with the dashboard, use `sd practice drop` for each skill it installed.
+- if the setup installed them as its own optional pieces, remove them the same way. That removes
+  the links only, so say that the settings and add-ons stay unless the person asks to remove them.
 
 Leave Mail, Calendar, Thunderbird and the repository itself as they are, and say that macOS's
 Automation permission can be switched off in System Settings.

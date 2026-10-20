@@ -225,7 +225,7 @@ window if you want." The person may choose another window ("last 30 days", "sinc
    - **Operational knowledge, not a task** → the **notes** file.
    - **Unclear** → the **inbox** capture file, for later triage.
    - **Needs the person's decision before it can be filed anywhere** → a question they can answer
-     in a sentence. If the setup has review cards (the session dashboard's), raise a card;
+     in a sentence. If your setup has review cards, raise a card;
      otherwise ask in the conversation *and* record it in the inbox file. **Dismissing a question
      is cheap; losing an item is not.**
    - **A hard external deadline (optional, ask first):** offer a calendar reminder with lead time
