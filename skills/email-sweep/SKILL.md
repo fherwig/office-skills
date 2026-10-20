@@ -74,13 +74,24 @@ window if you want." The person may choose another window ("last 30 days", "sinc
      set newMsgs to (messages of mbox whose date received > cutoff)
      log "TOTAL:" & (count of newMsgs)
      repeat with m in newMsgs
-       log (date received of m as text) & " || " & (sender of m) & " || " & (subject of m) & " || ATT:" & (count of mail attachments of m)
+       log (date received of m as text) & " || " & (sender of m) & " || " & (subject of m)
      end repeat
    end tell
    APPLESCRIPT
    ```
    Build dates as `(current date) - N * days`. A literal date string inside a `whose` clause can
    fail silently and return nothing.
+
+   **Ask only for header fields in a header pull.** `count of mail attachments`, `content` or
+   `source` make Mail load each message, and a pull that should take seconds then takes many
+   minutes. Look at attachments only for the few messages whose bodies you read.
+
+   **If Mail is still too slow, read its files instead.** Mail keeps every message as an `.emlx`
+   file under `~/Library/Mail/V<n>/<account id>/<mailbox>.mbox/`. Each file is a byte count on
+   the first line, then the message. Reading their headers with a short script, read-only, never
+   touches Mail. A search there misses nothing for headers, but some bodies are stored encoded,
+   so decode them with a mail parser before you search them. The terminal needs Full Disk
+   Access for this.
 
 3b. **A long window is pulled in slices, never in one query.** "No cap" is about coverage; this is
    about how the window is read. One long query can lock Mail for many minutes while the person is
